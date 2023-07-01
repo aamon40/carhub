@@ -1,4 +1,4 @@
-import { CarCard, CustomFilter, SearchBar } from "@/components";
+import { CarCard, CustomFilter, SearchBar, ShowMore } from "@/components";
 import { fuels, yearsOfProduction } from "@/constants";
 import { fetchCars } from "@/utils";
 
@@ -36,6 +36,10 @@ const CarCatalogue = async ({ searchParams }) => {
               <CarCard car={car} />
             ))}
           </div>
+          <ShowMore
+            pageNumber={(searchParams.limit || 10) / 10}
+            isNext={(searchParams.limit || 10) > allCars.length}
+          />
         </section>
       ) : (
         <div className="home__error-container">
